@@ -1,0 +1,11 @@
+@import "bootstrap";
+
+//This block needs to go before bootstrap-responsive
+body {
+  @media (min-width: 769px) {
+    padding-top: 60px;
+  }
+  padding-bottom: 20px;
+}
+
+@import "bootstrap-responsive";

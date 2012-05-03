@@ -1,0 +1,33 @@
+!!! 5
+%html
+  %head
+    %title Nri Movies
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{data: {toggle: 'collapse', target: '.nav-collapse'}}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "Nri Movies", root_path, class: 'brand'
+          .nav-collapse
+            %ul.nav
+              %li= link_to "Blog with sidebar", blog_with_sidebar_path
+              %li= link_to "Blog post", blog_post_path
+              %li= link_to "Archives", archives_path
+              %li= link_to "Three Columns", three_column_gallery_path
+              %li= link_to "Two Columns", four_column_gallery_path
+              %li= link_to "Gallery Page", gallery_page_path
+              %li= link_to "Search results page", search_results_page_path
+              %li= link_to "Two Columns", two_column_layout_path
+    #wrapper.container(class="#{params[:controller].parameterize}_controller #{params[:action].parameterize}_page" )
+      - flash.each do |type, message|
+        .alert.fade.in{:class => bootstrap_flash_class(type) }
+          %a.close{:href => "#", "data-dismiss" => "alert" } ×
+          = message
+      = yield
